@@ -13,7 +13,7 @@ let package = Package(
             targets: ["FINporterFido"]),
     ],
     dependencies: [
-        .package(name: "FINporter", path: "../FINporter"),
+        .package(url: "https://github.com/openalloc/FINporter.git", from: "1.1.0"),
 
         // Dependencies declare other packages that this package depends on.
         // .package(url: /* package url */, from: "1.0.0"),
