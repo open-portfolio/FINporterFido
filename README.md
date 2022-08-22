@@ -6,11 +6,11 @@ Available as a component of both a `finport` command line executable and as an o
 
 _FINporterFido_ is part of the [OpenAlloc](https://github.com/openalloc) family of open source Swift software tools.
 
-Used by investing apps like [FlowAllocator](https://flowallocator.app/FlowAllocator/index.html) and [FlowWorth](https://flowallocator.app/FlowWorth/index.html).
+Used by investing apps like [FlowAllocator](https://openalloc.github.io/FlowAllocator/index.html) and [FlowWorth](https://openalloc.github.io/FlowWorth/index.html).
 
 ## Disclaimer
 
-The developers of this project (presently FlowAllocator LLC) are not financial advisers and do not offer tax or investing advice. 
+The developers of this project (presently OpenAlloc LLC) are not financial advisers and do not offer tax or investing advice. 
 
 Where explicit support is provided for the transformation of data format associated with a service (brokerage, etc.), it is not a recommendation or endorsement of that service.
 
@@ -88,15 +88,15 @@ Swift open-source libraries (by the same author):
 * [SwiftSeriesResampler](https://github.com/openalloc/SwiftSeriesResampler) - transform a series of coordinate values into a new series with uniform intervals
 * [SwiftSimpleTree](https://github.com/openalloc/SwiftSimpleTree) - a nested data structure that’s flexible and easy to use
 
-And commercial apps using this library (by the same author):
+And open source apps using this library (by the same author):
 
-* [FlowAllocator](https://flowallocator.app/FlowAllocator/index.html) - portfolio rebalancing tool for macOS
-* [FlowWorth](https://flowallocator.app/FlowWorth/index.html) - a new portfolio performance and valuation tracking tool for macOS
+* [FlowAllocator](https://openalloc.github.io/FlowAllocator/index.html) - portfolio rebalancing tool for macOS
+* [FlowWorth](https://openalloc.github.io/FlowWorth/index.html) - a new portfolio performance and valuation tracking tool for macOS
 
 
 ## License
 
-Copyright 2021 FlowAllocator LLC
+Copyright 2021, 2022 OpenAlloc LLC
 
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License. You may obtain a copy of the License at
 
