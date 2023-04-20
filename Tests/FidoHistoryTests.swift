@@ -119,7 +119,7 @@ final class FidoHistoryTests: XCTestCase {
         XCTAssertTrue(areEqual(expected, actual.first!))
         XCTAssertEqual(0, rr.count)
     }
-    
+
     func testMiscFlow() throws {
         let str = """
         Brokerage
@@ -158,7 +158,7 @@ final class FidoHistoryTests: XCTestCase {
                 "txnAccountID": "X0000000C",
                 "txnShareCount": 7.0,
                 "txnSharePrice": 1.0,
-            ]
+            ],
         ]
 
         XCTAssertEqual(expected, actual)

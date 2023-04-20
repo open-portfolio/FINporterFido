@@ -15,21 +15,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+import FINporter
 @testable import FINporterFido
 import XCTest
-import FINporter
 
 final class FidoDateFormatterTests: XCTestCase {
     let df = ISO8601DateFormatter()
     let tzNewYork = TimeZone(identifier: "America/New_York")!
     let tzDenver = TimeZone(identifier: "America/Denver")!
-    
+
     func testBasic() throws {
         let actual = parseFidoMMDDYYYY("03/01/2021", timeZone: tzNewYork)
         let expected = df.date(from: "2021-03-01T17:00:00Z")
         XCTAssertEqual(expected, actual)
     }
-    
+
     func testOverrideTimeOfDay() throws {
         let actual = parseFidoMMDDYYYY("03/01/2021", defTimeOfDay: "13:00", timeZone: tzNewYork)
         let expected = df.date(from: "2021-03-01T18:00:00Z")

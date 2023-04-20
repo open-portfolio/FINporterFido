@@ -1,6 +1,6 @@
 //
 //  FidoDateFormatter.swift
-//  
+//
 // Copyright 2021, 2022 OpenAlloc LLC
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -19,7 +19,6 @@ import Foundation
 
 import FINporter
 
-
 let fidoDateFormatter: DateFormatter = {
     let df = DateFormatter()
     // h: Hour [1-12]
@@ -34,18 +33,18 @@ let fidoDateFormatter: DateFormatter = {
 /// assume noon of current time zone for any Fido date
 func parseFidoMMDDYYYY(_ mmddyyyy: String?,
                        defTimeOfDay: String? = nil,
-                       timeZone: TimeZone) -> Date? {
+                       timeZone: TimeZone) -> Date?
+{
     let timeOfDay: String = defTimeOfDay ?? "12:00"
     guard let _mmddyyyy = mmddyyyy,
           timeOfDay.count == 5
     else { return nil }
-    
+
     let df = DateFormatter()
     df.dateFormat = "MM/dd/yyyy HH:mm"
     df.timeZone = timeZone
-    
+
     let dateStr = "\(_mmddyyyy) \(timeOfDay)"
     let result = df.date(from: dateStr)
     return result
 }
-    

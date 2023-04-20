@@ -113,7 +113,7 @@ final class FidoPositionsTests: XCTestCase {
 
             XCTAssertTrue(areEqual(expected2, actual2))
             XCTAssertEqual(0, rejectedRows.count)
-            
+
             let actual3: [AllocRowed.DecodedRow] = try imp.decode(MHolding.self, dataStr, rejectedRows: &rejectedRows, outputSchema: .allocAccount)
 
             let expected3: [AllocRowed.DecodedRow] = [
@@ -123,10 +123,9 @@ final class FidoPositionsTests: XCTestCase {
 
             XCTAssertTrue(areEqual(expected3, actual3))
             XCTAssertEqual(0, rejectedRows.count)
-
         }
     }
-    
+
     /// cash holding may have "n/a" for share basis
     func testHoldingCashShareBasisSetToLastPrice() throws {
         var rejectedRows = [AllocRowed.RawRow]()
@@ -137,12 +136,12 @@ final class FidoPositionsTests: XCTestCase {
             "Quantity": "1",
             "Cost Basis Per Share": "n/a",
         ]
-        
+
         let actual = imp.holding(rawRow, rejectedRows: &rejectedRows)
         XCTAssertNotNil(actual)
         XCTAssertEqual(actual!["shareBasis"]!, 1.00)
     }
-    
+
     func testHoldingShareBasisMissing() throws {
         var rejectedRows = [AllocRowed.RawRow]()
         let rawRow: AllocRowed.RawRow = [
@@ -153,34 +152,33 @@ final class FidoPositionsTests: XCTestCase {
             "Cost Basis Per Share": "n/a",
             "Cost Basis": "$48323.69",
         ]
-        
+
         let actual = imp.holding(rawRow, rejectedRows: &rejectedRows)
         XCTAssertNotNil(actual)
         XCTAssertEqual(actual?["shareBasis"] as! Double, 14.49, accuracy: 0.01)
     }
-    
+
     func testParseSourceMeta() throws {
-        
         let str = """
         Account Number,Account Name,...
         "XYZ","ABC",...
-        
+
         "Date downloaded 07/30/2021 2:26 PM ET"
-            
+
         "legalese down here"
         """
-        
+
         let timestamp = Date()
         var rejectedRows = [AllocRowed.RawRow]()
         let dataStr = str.data(using: .utf8)!
-        
+
         let actual: [MSourceMeta.DecodedRow] = try imp.decode(MSourceMeta.self,
-                                                       dataStr,
-                                                       rejectedRows: &rejectedRows,
-                                                       outputSchema: .allocMetaSource,
-                                                       url: URL(string: "http://blah.com"),
-                                                       timestamp: timestamp)
-        
+                                                              dataStr,
+                                                              rejectedRows: &rejectedRows,
+                                                              outputSchema: .allocMetaSource,
+                                                              url: URL(string: "http://blah.com"),
+                                                              timestamp: timestamp)
+
         XCTAssertEqual(1, actual.count)
         XCTAssertNotNil(actual[0]["sourceMetaID"]!)
         XCTAssertEqual(URL(string: "http://blah.com"), actual[0]["url"]!)
