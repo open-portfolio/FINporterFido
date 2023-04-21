@@ -97,8 +97,8 @@ public class FidoPositions: FINporter {
         } else {
             if let csvRange = str.range(of: FidoPositions.csvRE, options: .regularExpression) {
                 let csvStr = str[csvRange]
-                let delimitedRows = try CSV(string: String(csvStr)).namedRows
-                let nuItems = decodeDelimitedRows(delimitedRows: delimitedRows,
+                let table = try NamedCSV(string: String(csvStr))
+                let nuItems = decodeDelimitedRows(delimitedRows: table.rows,
                                                   outputSchema_: outputSchema_,
                                                   rejectedRows: &rejectedRows,
                                                   timestamp: timestamp)

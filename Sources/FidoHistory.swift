@@ -73,8 +73,8 @@ public class FidoHistory: FINporter {
 
         if let csvRange = str.range(of: FidoHistory.csvRE, options: .regularExpression) {
             let csvStr = String(str[csvRange])
-            let delimitedRows = try CSV(string: String(csvStr)).namedRows
-            let nuItems = decodeDelimitedRows(delimitedRows: delimitedRows,
+            let table = try NamedCSV(string: String(csvStr))
+            let nuItems = decodeDelimitedRows(delimitedRows: table.rows,
                                               defTimeOfDay: defTimeOfDay,
                                               timeZone: timeZone,
                                               rejectedRows: &rejectedRows)

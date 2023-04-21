@@ -75,9 +75,9 @@ public class FidoSales: FINporter {
             return nil
         }()
 
-        let delimitedRows = try CSV(string: str).namedRows
+        let table = try NamedCSV(string: String(str))
 
-        return decodeDelimitedRows(delimitedRows: delimitedRows,
+        return decodeDelimitedRows(delimitedRows: table.rows,
                                    defTimeOfDay: defTimeOfDay,
                                    timeZone: timeZone,
                                    rejectedRows: &rejectedRows,
