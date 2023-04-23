@@ -40,8 +40,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnSecurityID": "VEA", "txnShareCount": 0.446, "txnAccountID": "200000000", "txnAction": AllocData.MTransaction.Action.buysell, "txnTransactedAt": timestamp1, "txnSharePrice": 51.38]]
@@ -55,8 +55,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnSecurityID": "TLT", "txnShareCount": -86.0, "txnAccountID": "200000000", "txnAction": AllocData.MTransaction.Action.buysell, "txnTransactedAt": timestamp1, "txnSharePrice": 144.41]]
@@ -70,8 +70,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnShareCount": 1010.0, "txnAccountID": "Z00000000", "txnAction": AllocData.MTransaction.Action.transfer, "txnTransactedAt": timestamp1, "txnSharePrice": 1.0]]
@@ -86,8 +86,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnSecurityID": "TLT", "txnShareCount": -86, "txnAccountID": "20000000", "txnAction": AllocData.MTransaction.Action.transfer, "txnTransactedAt": timestamp1, "txnSharePrice": 144.41]]
@@ -102,8 +102,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnSecurityID": "TLT", "txnShareCount": 86, "txnAccountID": "20000000", "txnAction": AllocData.MTransaction.Action.transfer, "txnTransactedAt": timestamp1, "txnSharePrice": 144.41]]
@@ -117,8 +117,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnSecurityID": "VPL", "txnShareCount": 297.62, "txnAccountID": "200000000", "txnAction": AllocData.MTransaction.Action.income, "txnTransactedAt": timestamp1, "txnSharePrice": 1.0]]
@@ -132,8 +132,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnShareCount": 1.56, "txnAccountID": "Z00000000", "txnSecurityID": "QXXXX", "txnAction": AllocData.MTransaction.Action.income, "txnTransactedAt": timestamp1, "txnSharePrice": 1.0]]
@@ -147,8 +147,8 @@ final class FidoHistoryActionTests: XCTestCase {
         """
 
         let timestamp1 = df.date(from: "2021-07-30T16:00:00Z")!
-        let delimitedRows = try CSV(string: String(csvStr)).namedRows
-        let actual = imp.decodeDelimitedRows(delimitedRows: delimitedRows,
+        let table = try NamedCSV(string: String(csvStr))
+        let actual = imp.decodeDelimitedRows(delimitedRows: table.rows,
                                              timeZone: tzNewYork,
                                              rejectedRows: &rr)
         let expected: [AllocRowed.DecodedRow] = [["txnShareCount": -1010, "txnAccountID": "Z00000000", "txnSecurityID": "QXXXX", "txnAction": AllocData.MTransaction.Action.buysell, "txnTransactedAt": timestamp1, "txnSharePrice": 1.0]]
