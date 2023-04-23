@@ -72,11 +72,11 @@ final class FidoPositionsTests: XCTestCase {
 
     func testParse() throws {
         for str in [
-            "﻿Account Number,Account Name,Symbol,Description,Quantity,Last Price,Last Price Change,Current Value,Today\'s Gain/Loss Dollar,Today\'s Gain/Loss Percent,Total Gain/Loss Dollar,Total Gain/Loss Percent,Percent Of Account,Cost Basis,Cost Basis Per Share,Type\r\nZ00000000,AAAA,VWO,VANGUARD INTL EQUITY INDEX FDS FTSE EMR MKT ETF,900,$50.922,+$0.160,\"$45,900.35\",+$150.25,+0.32%,\"+$11,945.20\",+31.10%,15.05%,\"$38,362.05\",$28.96,Cash,\r\nZ00000001,BBBB,VOO,VANGUARD S&P 500 ETF,800,$40.922,+$0.160,\"$45,900.35\",+$150.25,+0.32%,\"+$11,945.20\",+31.10%,15.05%,\"$38,362.05\",$18.96,Cash,\r\n\r\nXXX",
+            "﻿Account Number,Account Name,Symbol,Description,Quantity,Last Price,Last Price Change,Current Value,Today\'s Gain/Loss Dollar,Today\'s Gain/Loss Percent,Total Gain/Loss Dollar,Total Gain/Loss Percent,Percent Of Account,Cost Basis Total,Average Cost Basis,Type\r\nZ00000000,AAAA,VWO,VANGUARD INTL EQUITY INDEX FDS FTSE EMR MKT ETF,900,$50.922,+$0.160,\"$45,900.35\",+$150.25,+0.32%,\"+$11,945.20\",+31.10%,15.05%,\"$38,362.05\",$28.96,Cash,\r\nZ00000001,BBBB,VOO,VANGUARD S&P 500 ETF,800,$40.922,+$0.160,\"$45,900.35\",+$150.25,+0.32%,\"+$11,945.20\",+31.10%,15.05%,\"$38,362.05\",$18.96,Cash,\r\n\r\nXXX",
 
             // testParseWithLFToFirstBlankLine
             """
-            Account Number,Account Name,Symbol,Description,Quantity,Last Price,Last Price Change,Current Value,Today's Gain/Loss Dollar,Today's Gain/Loss Percent,Total Gain/Loss Dollar,Total Gain/Loss Percent,Percent Of Account,Cost Basis,Cost Basis Per Share,Type
+            Account Number,Account Name,Symbol,Description,Quantity,Last Price,Last Price Change,Current Value,Today's Gain/Loss Dollar,Today's Gain/Loss Percent,Total Gain/Loss Dollar,Total Gain/Loss Percent,Percent Of Account,Cost Basis Total,Average Cost Basis,Type
             Z00000000,AAAA,VWO,VANGUARD INTL EQUITY INDEX FDS FTSE EMR MKT ETF,900,$50.922,+$0.160,"$45,900.35",+$150.25,+0.32%,"+$11,945.20",+31.10%,15.05%,"$38,362.05",$28.96,Cash,
             Z00000001,BBBB,VOO,VANGUARD S&P 500 ETF,800,$40.922,+$0.160,"$45,900.35",+$150.25,+0.32%,"+$11,945.20",+31.10%,15.05%,"$38,362.05",$18.96,Cash,
 
@@ -85,7 +85,7 @@ final class FidoPositionsTests: XCTestCase {
 
             // testParseWithLFToFirstBlankLine
             """
-            Account Number,Account Name,Symbol,Description,Quantity,Last Price,Last Price Change,Current Value,Today's Gain/Loss Dollar,Today's Gain/Loss Percent,Total Gain/Loss Dollar,Total Gain/Loss Percent,Percent Of Account,Cost Basis,Cost Basis Per Share,Type
+            Account Number,Account Name,Symbol,Description,Quantity,Last Price,Last Price Change,Current Value,Today's Gain/Loss Dollar,Today's Gain/Loss Percent,Total Gain/Loss Dollar,Total Gain/Loss Percent,Percent Of Account,Cost Basis Total,Average Cost Basis,Type
             Z00000000,AAAA,VWO,VANGUARD INTL EQUITY INDEX FDS FTSE EMR MKT ETF,900,$50.922,+$0.160,"$45,900.35",+$150.25,+0.32%,"+$11,945.20",+31.10%,15.05%,"$38,362.05",$28.96,Cash,
             Z00000001,BBBB,VOO,VANGUARD S&P 500 ETF,800,$40.922,+$0.160,"$45,900.35",+$150.25,+0.32%,"+$11,945.20",+31.10%,15.05%,"$38,362.05",$18.96,Cash,
             """,
@@ -134,7 +134,7 @@ final class FidoPositionsTests: XCTestCase {
             "Symbol": "SPAXX",
             "Last Price": "1.00",
             "Quantity": "1",
-            "Cost Basis Per Share": "n/a",
+            "Average Cost Basis": "n/a",
         ]
 
         let actual = imp.holding(rawRow, rejectedRows: &rejectedRows)
@@ -149,8 +149,8 @@ final class FidoPositionsTests: XCTestCase {
             "Symbol": "ABCXY",
             "Last Price": "$16.5587",
             "Quantity": "3333.821",
-            "Cost Basis Per Share": "n/a",
-            "Cost Basis": "$48323.69",
+            "Average Cost Basis": "n/a",
+            "Cost Basis Total": "$48323.69",
         ]
 
         let actual = imp.holding(rawRow, rejectedRows: &rejectedRows)
